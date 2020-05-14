@@ -1,0 +1,16 @@
+html 에서 div.클래스이름 +Tab  -> <div class="클래스이름"></div> 자동완성
+
+css selector 여러개를 한꺼번에 속성 지정할때 ' , ' 로 연결 
+
+div.controls_btns>button#jsMode+button#jsSave 자동완성 !! 
+<div class="controls_btns"><button id="jsMode"></button><button id="jsSave"></button></div>  
+
+CSS에서 선택자를 나열 ( , 없이 ) 한건 부모 선택자를 나타 내기 위함 
+-> 마지막의 선택자에 대해서만 작성한 속성이 적용 된다. (주석과 같은 느낌)
+
+button:active{			->IN CSS , 버튼 클릭시 크기 0.9배 로 변화
+    transform : scale(0.90);
+}
+
+Mouse Event 에서 Client 좌표는 웹 창 전체에 대한 절대좌표
+	offset 좌표는 해당 태그의 범위 안에서의 상대 좌표를 나타냄
