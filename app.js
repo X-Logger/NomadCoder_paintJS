@@ -3,7 +3,7 @@ const context = canvas.getContext('2d');
 const colors = document.querySelectorAll('.jsColor');
 const range = document.querySelector('#jsRange');
 const mode = document.querySelector('#jsMode');
-
+const saveBtn = document.querySelector("#jsSave");
 
 const INITIAL_COLOR = '#2c2c2c';
 
@@ -12,17 +12,22 @@ let painting = false;
 let filling = false;
 
 function init() {
+    canvas.width = 700;
+    canvas.height = 700;
+    context.fillStyle = "white";
+    context.fillRect(0,0,canvas.width,canvas.height);
+
     context.strokeStyle = INITIAL_COLOR;
     context.fillStyle=INITIAL_COLOR;
     context.lineWidth = 2.7;
-    canvas.width = 700;
-    canvas.height = 700;
+   
 
     if(canvas) {
         canvas.addEventListener("mousemove", onMouseMove);
         canvas.addEventListener("mousedown", startPaint);
         canvas.addEventListener("mouseup", stopPaint);
         canvas.addEventListener("mouseleave", stopPaint);
+        canvas.addEventListener("contextmenu",handleCM);
     }
     
     if (colors) {
@@ -35,6 +40,9 @@ function init() {
     }
     if (mode) {
         mode.addEventListener("click", handleModeClick);
+    }
+    if(saveBtn){
+        saveBtn.addEventListener("click",handleSaveClick);
     }
 }
 
@@ -84,4 +92,23 @@ function handleModeClick(event) {
         filling = false;
     }
 }
+
+function handleCM(event){
+    event.preventDefault();
+}
+
+function handleSaveClick(){
+    //파일 변환
+    const image = canvas.toDataURL('iamge/jpeg');
+
+    //a 태그로 링크를 생성하고
+    const link = document.createElement("a");
+    //링크 주소를 할당한 다음
+    link.href=image;
+    //해당 링크를 다운 받도록 지정 (파일 이름까지)
+    link.download = "PAINTJS";
+    //링크가 클릭됨을 임의로 지정 -> 저장 됨
+    link.click();
+}
+
 init();

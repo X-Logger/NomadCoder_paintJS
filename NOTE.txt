@@ -63,3 +63,8 @@ Array.forEach(원소 => 각 원소 접근)  : => 기호 꼭 필요 문법사항임
 이벤트처리 시 이벤트 상황
 console.dir(객체)에 나오는 이벤트 이름은 on~ 이여도 
 addEventListener를 줄때는 그냥 "~"라고 지정한다 ex) onclick->"click"
+
+우클릭시 나타나는 메뉴 = contextmenu (이벤트 처리에서 preventDefault를 하면 메뉴 안나오게 가능)
+
+a 태그를 JS에서 생성하고 , 이 태그가 실제로 클릭되지 않아도
+ 클릭됨을 JS 에서 임의로 지정할 수 있다. 이에 따라 이벤트 처리 가능
